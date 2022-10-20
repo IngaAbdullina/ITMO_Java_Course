@@ -9,12 +9,14 @@ public class JavaProgram {
     System.out.printf("Info about house [Name: %s; year or building: %d, number of floors: %d] \n",
         firstHouse.getName(), firstHouse.getBuildYear(), firstHouse.getFloorCount());
     System.out.printf("Number of years from the date the house %s was built: %d \n",
-        firstHouse.getName(), firstHouse.countBuildYearsFromNow());
+        firstHouse.getName(), firstHouse.countBuildYearsFromNow(firstHouse.getBuildYear()));
+
+    System.out.println("-=============================================================-");
 
     System.out.printf("Info about house [Name: %s; year or building: %d, number of floors: %d] \n",
         secondHouse.getName(), secondHouse.getBuildYear(), secondHouse.getFloorCount());
     System.out.printf("Number of years from the date the house %s was built: %d \n",
-        secondHouse.getName(), secondHouse.countBuildYearsFromNow());
+        secondHouse.getName(), secondHouse.countBuildYearsFromNow(secondHouse.getBuildYear()));
 
   }
 

@@ -7,8 +7,8 @@ public class JavaProgram {
     Animal seal = new Animal("seal", "black", 220.5);
     Animal wolf = new Animal("wolf", "gray", 40.3);
 
-    Animal.getInfo(lion);
-    Animal.getInfo(seal);
-    Animal.getInfo(wolf);
+    lion.getInfo();
+    seal.getInfo();
+    wolf.getInfo();
   }
 }

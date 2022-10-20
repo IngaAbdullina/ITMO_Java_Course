@@ -13,12 +13,12 @@ public class Task5 {
 
   public static void main(String[] args) {
     int number = getNumber();
-    System.out.println(isElement(number));
+    int[] arr = ArrayUtil.createArrayWithRandomNumbers(10, 100);
+    System.out.println(isElement(number, arr));
   }
 
-  private static boolean isElement(int number) {
-    int[] arr = ArrayUtil.createArrayWithRandomNumbers(10, 100);
-
+  // todo add array as parameter and move array creation in main
+  private static boolean isElement(int number, int[] arr) {
     System.out.println("Array: " + Arrays.toString(arr));
     System.out.printf("Array contains element %d: ", number);
     return arr[0] == number || arr[arr.length - 1] == number;
@@ -26,7 +26,6 @@ public class Task5 {
 
   private static int getNumber() {
     Scanner scanner = new Scanner(System.in);
-
     System.out.println("Введите целое число от 0 до 100:");
     return scanner.nextInt();
   }

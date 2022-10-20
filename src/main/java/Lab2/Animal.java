@@ -1,10 +1,12 @@
 package Lab2;
 
 public class Animal {
-  int id;
-  String type;
-  String colour;
-  double weight;
+
+  // todo make fields private
+  private int id;
+  private String type;
+  private String colour;
+  private double weight;
 
   public Animal() {
   }

@@ -1,7 +1,5 @@
 package Lab3.Task3;
 
-import java.util.Calendar;
-
 public class House {
 
   private int floorCount;
@@ -34,8 +32,8 @@ public class House {
     this.name = name;
   }
 
-  public int countBuildYearsFromNow() {
-    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-    return currentYear - this.buildYear;
+  // todo add parameter and simplify
+  protected int countBuildYearsFromNow(int buildYear) {
+    return 2022 - buildYear;
   }
 }

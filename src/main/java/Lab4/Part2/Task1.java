@@ -9,12 +9,11 @@ import Lab4.ArrayUtil;
  */
 public class Task1 {
   public static void main(String[] args) {
-    checkSorted();
+    int[] arr = ArrayUtil.getUserArrayDefaultLengthFive();
+    checkSorted(arr);
   }
 
-  private static void checkSorted() {
-    int[] arr = ArrayUtil.getUserArrayDefaultLengthFive();
-
+  private static void checkSorted(int[] arr) {
     boolean isSorted = true;
     for (int i = 0; i < arr.length - 1; i++) {
       if (arr[i] > arr[i + 1]) {

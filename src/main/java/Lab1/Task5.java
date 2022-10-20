@@ -1,7 +1,5 @@
 package Lab1;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -17,17 +15,15 @@ public class Task5 {
     readFromConsole();
   }
 
+  // todo delete LinkedList
   private static void readFromConsole() {
     Scanner scanner = new Scanner(System.in);
-    Map<String, Integer> map = new LinkedHashMap<>();
 
     for (int i = 1; i < 5; i++) {
       System.out.printf("%d. Введите целое число: \n", i);
       int number = scanner.nextInt();
-      String text = String.format("Число №%d = ", i);
-      map.put(text, number);
+      System.out.printf("Число №%d = %d \n", i, number);
     }
     scanner.close();
-    map.forEach((k,v) -> System.out.println(k + v));
   }
 }

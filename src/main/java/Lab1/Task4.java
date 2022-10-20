@@ -15,6 +15,6 @@ public class Task4 {
 
   private static void countMulipl(double first, double second, double third) {
     double result = first * second * third;
-    System.out.printf("%f * %f * %f = %f%n", first, second, third, result);
+    System.out.printf("%f * %f * %f = %f", first, second, third, result);
   }
 }

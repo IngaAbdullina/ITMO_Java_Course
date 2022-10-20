@@ -9,11 +9,12 @@ import java.util.Arrays;
 public class Task6 {
 
   public static void main(String[] args) {
-    System.out.println(isContains(1, 3));
+    int[] arr = ArrayUtil.createArrayWithRandomNumbers(10, 10);
+    System.out.println(isContains(1, 3, arr));
   }
 
-  private static boolean isContains(int first, int second) {
-    int[] arr = ArrayUtil.createArrayWithRandomNumbers(10, 10);
+  // todo вынести генерацию массива в main
+  private static boolean isContains(int first, int second, int[] arr) {
     boolean isContains = false;
 
     for (int i : arr) {

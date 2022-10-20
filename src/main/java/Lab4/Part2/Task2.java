@@ -12,13 +12,8 @@ import java.util.Scanner;
 public class Task2 {
 
   public static void main(String[] args) {
-    createArray();
-  }
-
-  private static void createArray() {
     int arrayLength = getArrayLength();
     int[] arr = ArrayUtil.getUserArrayStrictLength(arrayLength);
-
     System.out.printf("Array length: %d \n", arrayLength);
     System.out.println("Result: " + Arrays.toString(arr));
   }

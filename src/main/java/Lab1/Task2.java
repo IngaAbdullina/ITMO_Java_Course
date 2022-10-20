@@ -12,17 +12,18 @@ public class Task2 {
     countSecond(29, 4, -15);
   }
 
-  private static void countFirst(int first, int second, int third, int forth) {
+  // todo int -> double
+  private static void countFirst(double first, double second, double third, double forth) {
     if (forth == 0) {
       System.err.println("Forth number must not be 0!");
       throw new ArithmeticException();
     }
-    int result = (first + second) * (third / forth);
-    System.out.printf("(%d + %d) * (%d / %d) = %d\n", first, second, third, forth, result);
+    double result = (first + second) * (third / forth);
+    System.out.printf("(%f + %f) * (%f / %f) = %f \n", first, second, third, forth, result);
   }
 
-  private static void countSecond(int first, int second, int third) {
-    int result = (first) * (second) * (third);
-    System.out.printf("(%d) * (%d) * (%d) = %d", first, second, third, result);
+  private static void countSecond(double first, double second, double third) {
+    double result = (first) * (second) * (third);
+    System.out.printf("(%f) * (%f) * (%f) = %f", first, second, third, result);
   }
 }

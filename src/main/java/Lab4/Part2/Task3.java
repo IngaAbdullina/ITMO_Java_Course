@@ -9,11 +9,12 @@ import java.util.Arrays;
 public class Task3 {
 
   public static void main(String[] args) {
-    changeFirstAndLastElementInArray();
+    int[] baseArr = ArrayUtil.getUserArrayDefaultLengthFive();
+    changeFirstAndLastElementInArray(baseArr);
   }
 
-  private static void changeFirstAndLastElementInArray() {
-    int[] baseArr = ArrayUtil.getUserArrayDefaultLengthFive();
+  // todo вынести генерацию массива в main
+  private static void changeFirstAndLastElementInArray(int[] baseArr) {
     System.out.println("Base array: " + Arrays.toString(baseArr));
 
     int temp = baseArr[0];

@@ -11,8 +11,9 @@ public class Task3 {
     divideNUmber(number);
   }
 
-  private static void divideNUmber(int number) {
-    int result = (number / 10) / 10;
-    System.out.printf("(%d / 10) / 10 = %d", number, result);
+  // todo int -> double
+  private static void divideNUmber(double number) {
+    double result = (number / 10) / 10;
+    System.out.printf("(%f / 10) / 10 = %f", number, result);
   }
 }

@@ -2,9 +2,10 @@ package Lab3.Task2;
 
 public class Animal {
 
-  String type;
-  String colour;
-  double weight;
+  // todo make fields private
+  private String type;
+  private String colour;
+  private double weight;
 
   public Animal(String type, String colour, double weight) {
     this.type = type;
@@ -24,10 +25,11 @@ public class Animal {
   public Animal() {
   }
 
-  public static void getInfo(Animal animal) {
+  // todo make non-static
+  public void getInfo() {
     System.out.println("-==============================-");
-    System.out.printf("Kind of animal: %s \n", animal.type);
-    System.out.printf("Animal colour: %s \n", animal.colour);
-    System.out.printf("Animal weight: %f \n", animal.weight);
+    System.out.printf("Kind of animal: %s \n", this.type);
+    System.out.printf("Animal colour: %s \n", this.colour);
+    System.out.printf("Animal weight: %f \n", this.weight);
   }
 }

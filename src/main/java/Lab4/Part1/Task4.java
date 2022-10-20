@@ -1,6 +1,6 @@
 package Lab4.Part1;
 
-import java.util.List;
+import java.util.Scanner;
 
 /**
  * Напишите программу, которая принимает от пользователя три целых числа и
@@ -13,7 +13,17 @@ public class Task4 {
   }
 
   private static boolean isTrue() {
-    List<Integer> numbers = Task3.getNumbers();
-    return numbers.get(0) < numbers.get(1) && numbers.get(1) < numbers.get(2);
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Введите первое целое число:");
+    int first = scanner.nextInt();
+
+    System.out.println("Введите второе целое число:");
+    int second = scanner.nextInt();
+
+    System.out.println("Введите третье целое число:");
+    int third = scanner.nextInt();
+
+    return first < second && second < third;
   }
 }
