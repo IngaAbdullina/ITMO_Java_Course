@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class ParentScanner {
 
-    public int getUserAge() {
-        Scanner scanner = new Scanner(System.in);
+    protected final Scanner scanner = new Scanner(System.in);
+
+    public void getUserInfo() {
         System.out.println("Enter your age:");
-        return scanner.nextInt();
+        System.out.printf("User age is %d \n", scanner.nextInt());
     }
 }

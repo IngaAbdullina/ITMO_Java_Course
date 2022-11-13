@@ -8,8 +8,8 @@ public class Main9 {
         // First task
 //        List<Cat> cats = getCats();
 //        displayUniqueCats(getUniqueCats(cats));
-
-        // Second task
+//
+//        // Second task
 //        List<Integer> arrayInts = getFilledArrayList();
 //        List<Integer> linkedInts = getFilledLinkedList();
 //        getRandomNumber(arrayInts);
@@ -21,17 +21,19 @@ public class Main9 {
 
     private static void getUserScore() {
         Scanner scanner = new Scanner(System.in);
-        Map<String, Integer> usersMap = createUsersMap();
+        Map<User, Integer> usersMap = createUsersMap();
         boolean failure = true;
+        User userToFind;
 
         do {
             System.out.println("Enter user's name:");
             String name = scanner.next();
+            userToFind = new User(name);
 
-            if (!usersMap.containsKey(name)) {
+            if (!usersMap.containsKey(userToFind)) {
                 System.err.printf("No user with name %s \n", name);
             } else {
-                int score = usersMap.get(name);
+                int score = usersMap.get(userToFind);
                 failure = false;
                 System.out.printf("%s's score is %d \n", name, score);
             }
@@ -39,13 +41,14 @@ public class Main9 {
 
     }
 
-    private static Map<String, Integer> createUsersMap() {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("Jane", (int) (Math.random() * 10));
-        map.put("Jonas", (int) (Math.random() * 10));
-        map.put("Tom", (int) (Math.random() * 10));
-        map.put("Bob", (int) (Math.random() * 10));
-        map.put("Anna", (int) (Math.random() * 10));
+    // todo Map<User, Int>
+    private static Map<User, Integer> createUsersMap() {
+        Map<User, Integer> map = new HashMap<>();
+        map.put(new User("Jane"), (int) (Math.random() * 10));
+        map.put(new User("Jonas"), (int) (Math.random() * 10));
+        map.put(new User("Tom"), (int) (Math.random() * 10));
+        map.put(new User("Bob"), (int) (Math.random() * 10));
+        map.put(new User("Anna"), (int) (Math.random() * 10));
 
         return map;
     }

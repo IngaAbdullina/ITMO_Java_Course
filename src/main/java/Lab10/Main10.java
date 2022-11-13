@@ -1,14 +1,11 @@
 package Lab10;
 
 import sun.misc.IOUtils;
-import sun.nio.ch.IOUtil;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 
 /**
@@ -20,10 +17,11 @@ import java.util.regex.Matcher;
 public class Main10 {
 
     public static void main(String[] args) {
-        String path = "C:/Users/Inga/Desktop/ITMO/Java/Task_10.txt";
-//        System.out.println(Arrays.toString(readTextFromFile(path)));
-//        writeStringToFile("String to write in file.", path);
-//        mergeTwoFiles(path, "C:/Users/Inga/Desktop/ITMO/Java/Task_10_additional_file.txt");
+        String path = "C:/Users/Inga/Desktop/ITMO/Java/";
+        System.out.println(readTextFromFile(path + "Task_10.txt"));
+        writeStringToFile(Collections.singletonList("String to write in file."), path + "Task_10.txt");
+        mergeTwoFiles(path + "Task_10.txt", path + "Task_10_additional_file.txt",
+                path + "Task_10_third_file");
         changeSymbolsInFile(path, "$");
     }
 
@@ -36,7 +34,7 @@ public class Main10 {
             }
 
             String str = text.replaceAll("[^A-Za-zА-Яа-яЁё0-9 ,.]+", Matcher.quoteReplacement(symbol));
-            writeStringToFile(str, filePath);
+            writeStringToFile(Collections.singletonList(str), filePath);
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error while reading file!");
@@ -45,41 +43,40 @@ public class Main10 {
     }
 
     // метод, который склеивает два текстовых файла в один
-    private static void mergeTwoFiles(String firstFile, String secondFile) {
-        String[] textFromSecondFile = readTextFromFile(secondFile);
-        StringBuilder sb = new StringBuilder(textFromSecondFile.length);
-        for (String s : textFromSecondFile) {
-            sb.append(s);
-            sb.append(" ");
-        }
-        String text = sb.toString();
-
-        writeStringToFile(text, firstFile);
+    // todo записать в третий файл
+    private static void mergeTwoFiles(String firstFile, String secondFile, String thirdFile) {
+        List<String> textFromFirstFile = readTextFromFile(firstFile);
+        List<String> textFromSecondFile = readTextFromFile(secondFile);
+        assert textFromSecondFile != null;
+        assert textFromFirstFile != null;
+        textFromFirstFile.addAll(textFromSecondFile);
+        writeStringToFile(textFromFirstFile, thirdFile);
     }
 
     // метод, который записывает в файл строку, переданную параметром
-    private static void writeStringToFile(String str, String path) {
-        try {
-            Files.write(Paths.get(path), str.getBytes(), StandardOpenOption.APPEND);
+    private static void writeStringToFile(List<String> textFromFirstFile, String filePath) {
+        try (FileWriter fw = new FileWriter(filePath)) {
+            for (String line : textFromFirstFile) {
+                fw.write(line);
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
-        System.out.println(Arrays.toString(readTextFromFile(path)));
     }
 
     // метод, который читает текстовый файл и возвращает его в виде списка строк
-    private static String[] readTextFromFile(String path) {
-        String[] text;
-        try (FileInputStream input = new FileInputStream(path)) {
-            String s = new String(IOUtils.readAllBytes(input), StandardCharsets.UTF_8);
-            if (s.isEmpty()) {
-                return new String[]{"File is empty!"};
+    private static List<String> readTextFromFile(String path) {
+        List<String> text = new LinkedList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+            text.add(line);
+            while (line != null) {
+                line = br.readLine();
+                text.add(line);
             }
-
-            text = s.split(" ");
         } catch (IOException e) {
-            e.printStackTrace();
-            return new String[]{"Error while reading file!"};
+            System.err.println(e.getMessage());
+            return null;
         }
         return text;
     }

@@ -3,7 +3,9 @@ package Lab06.Task5;
 public class MainScanner {
 
     public static void main(String[] args) {
-        CustomScanner scanner = new CustomScanner();
-        System.out.println(scanner.getUserAge());
+        ParentScanner parentScanner = new ParentScanner();
+        CustomScanner customScanner = new CustomScanner();
+        parentScanner.getUserInfo();
+        customScanner.getUserInfo();
     }
 }

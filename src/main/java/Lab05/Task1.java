@@ -11,9 +11,11 @@ public class Task1 {
     System.out.println("The largest word in text above: " + findLargestWord(text));
   }
 
+  // todo учесть наличие точек и запятых в тексте
   private static String findLargestWord(String text) {
     String largest = "";
-    String[] textArr = text.split(" ");
+    String formattedStr = text.replace("[^A-Za-zА-Яа-яЁё0-9]+", " ");
+    String[] textArr = formattedStr.split(" ");
 
     for (String word : textArr) {
       if (word.length() > largest.length()) {

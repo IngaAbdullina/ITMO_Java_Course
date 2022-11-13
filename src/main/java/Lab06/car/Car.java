@@ -2,15 +2,11 @@ package Lab06.car;
 
 public class Car {
 
-    public int weight;
-    public String model;
-    public char color;
-    public float speed;
-
-    public void outPut () {
-        System.out.println("Вес " + model + " составляет " + weight + "кг.");
-        System.out.println("Цвет машины - " + color + " и её скорость - " + speed);
-    }
+    // todo make private
+    private int weight;
+    private String model;
+    private char color;
+    private float speed;
 
     public Car(int weight, String model, char color, float speed) {
         this.weight = weight;
@@ -20,5 +16,10 @@ public class Car {
     }
 
     public Car() {
+    }
+
+    public void outPut () {
+        System.out.println("Вес " + model + " составляет " + weight + "кг.");
+        System.out.println("Цвет машины - " + color + " и её скорость - " + speed);
     }
 }

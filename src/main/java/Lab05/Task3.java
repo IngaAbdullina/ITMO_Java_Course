@@ -7,15 +7,16 @@ public class Task3 {
 
   public static void main(String[] args) {
     String text = "Строка со словом бяка должна пройти цензуру";
-    System.out.println(censor(text));
+    System.out.println(censor(text, "бяка", "[вырезано цензурой]"));
   }
 
-  private static String censor(String text) {
+  // todo добавить параметры
+  private static String censor(String text, String forbidden, String censorPhrase) {
     String[] textArr = text.split(" ");
 
     for (int i = 0; i < textArr.length; i++) {
-      if (textArr[i].equalsIgnoreCase("бяка")) {
-        textArr[i] = "[вырезано цензурой]";
+      if (textArr[i].equalsIgnoreCase(forbidden)) {
+        textArr[i] = censorPhrase;
       }
     }
 
