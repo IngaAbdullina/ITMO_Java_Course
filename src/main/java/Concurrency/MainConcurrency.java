@@ -1,5 +1,7 @@
 package Concurrency;
 
+import java.util.concurrent.CountDownLatch;
+
 public class MainConcurrency {
 
     public static void main(String[] args) {
@@ -12,21 +14,34 @@ public class MainConcurrency {
         // Напишите программу, в которой запускается 100 потоков, каждый из которых вызывает метод increment() 1000 раз.
         // После того, как потоки завершат работу count должен быть равен 100 000 при каждом запуске программы
         incrementCustomCount(100);
+
+        // Напишите программу, в которой создаются два потока,
+        // каждый из которых выводит по очереди на консоль своё имя
+        writeThreadName(2);
+    }
+
+    private static void writeThreadName(int threadsCount) {
+        Object object = new Object();
+        for (int i = 0; i < threadsCount; i++) {
+            Thread thread = new ThreadName(object);
+            thread.start();
+        }
     }
 
     private static void incrementCustomCount(int threadsCount) {
         Counter counter = new Counter();
+        CountDownLatch countDownLatch = new CountDownLatch(threadsCount);
 
         for (int i = 0; i < threadsCount; i++) {
-            Thread thread = new MultipleThread(counter);
+            Thread thread = new MultipleThread(counter, countDownLatch);
             thread.start();
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                System.err.println(e.getMessage());
-            }
         }
 
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            System.err.println(e.getMessage());
+        }
         System.out.println(counter.getCount());
     }
 
@@ -44,7 +59,7 @@ public class MainConcurrency {
 
     private static void writeNumbersInThreads(int numberOfThreads) {
         for (int i = 1; i <= numberOfThreads; i++) {
-            Thread thread = new FirstThread(i);
+            Thread thread = new FirstThread();
             thread.start();
         }
     }
